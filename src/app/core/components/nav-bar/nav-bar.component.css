@@ -1,0 +1,24 @@
+@keyframes animacaoEspacamento {
+    0% {
+        letter-spacing: 0;
+    }
+    50% {
+        letter-spacing: 8px; /* Ajuste o valor conforme necessário */
+    }
+    100% {
+        letter-spacing: 0;
+    }
+}
+
+.space:hover {
+    animation: animacaoEspacamento 2s infinite; /* Ajuste a duração conforme necessário */
+}
+
+.spaceNav{
+    padding-top: 3px;
+    padding-bottom: 1px;
+}
+.navbar{
+    border-bottom: solid;
+    color: #ffeb3b9c;
+}
