@@ -1,0 +1,38 @@
+
+    
+    
+<div class="container">
+    <div class="card shadow-lg p-3 mb-5">
+        <div class="card-body">
+          <form [formGroup]="signinForm" (ngSubmit)="sendLogin()">
+            <div class="mb-3">
+                <p for="exampleInputEmail1" class="form-label text-center fw-bold fs-4">Bem vindo</p>
+            </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label labels fw-semibold">Email:</label>
+                <input type="email" class="form-control" formControlName="email"
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp"
+                placeholder="Informe seu e-mail">
+                <app-input-error-msg [control]="this.signinForm.get('email')" [for]="'email'"
+                                    label="E-mail"></app-input-error-msg>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label labels fw-semibold">Password</label>
+                <input type="password" 
+                class="form-control" 
+                formControlName="password"
+                id="exampleInputPassword1"
+                placeholder="Informe sua password"
+                >
+                <app-input-error-msg [control]="this.signinForm.get('password')" [for]="'password'"
+                label="Password"
+                class="mt-4"></app-input-error-msg>
+              </div>
+              <div class="mb-3 form-check">
+            </div>
+            <button type="submit"  [disabled]="!signinForm.valid" class="btn btn-warning button fw-semibold mt-10">Entrar</button>
+            </form>
+        </div>
+      </div>
+</div>

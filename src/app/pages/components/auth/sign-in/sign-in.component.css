@@ -1,0 +1,32 @@
+.container{
+    padding: 8%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100%;
+    align-content: center;
+}
+.card{
+    width: 50%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.labels{
+    color: rgb(133, 133, 133);
+}
+::placeholder {
+    color: rgb(133, 133, 133);
+}
+.button{
+ width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card{
+        width: 80%;
+        height: 100%;
+        padding: 2rem;
+    }
+}
