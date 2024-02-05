@@ -23,4 +23,10 @@ export class ContactService {
     create(body: contactProps){
         return this.http.post(`${this.url}/CreateContato`, body)
     }
+    getById(id?: number){
+        return this.http.get(`${this.url}/GetContatoById?idContato=${id}`)
+    }
+    put(body: contactProps){
+        return this.http.put(`${this.url}/UpdateContato`, body)
+    }
 }

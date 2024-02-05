@@ -1,1 +1,9 @@
-<p>edit works!</p>
+<div class="container">
+    <app-bread-title [action]="'edit'" [id]="id" ></app-bread-title>
+      <div class="card shadow-lg p-3 mb-5">
+          <div class="card-body " style="max-height: 30rem;">
+            <app-contact-form [action]="'edit'" [id]="id"></app-contact-form>              
+          </div>
+      </div>
+  </div>
+  

@@ -33,24 +33,26 @@
                                     
                 <div class="form-group col-md-6 m-2">
                     <label class="form-label" for="customFile">Escolha a Imagem</label>
-                    <input type="file" class="form-control" id="Imagem" (change)="onChange($event)"   />
-                    <app-input-error-msg [control]="this.form.get('foto')" [for]="'foto'"
-                                    label="foto"></app-input-error-msg>
+                    <input type="file" [src]="file" class="form-control" id="Imagem" (change)="onChange($event)"   />
                 </div>
+                <app-input-error-msg [control]="this.form.get('foto')" [for]="'foto'"
+                                label="foto"></app-input-error-msg>
 
                 <div class="form-group col-md-6 m-2 d-flex flex-column align-items-start">
                     <label class="form-label" for="customFile">Prévia</label>
                     <img [src]="url" height="150" width="auto"><br>
                 </div>
             </div>
+            <div class="mb-3">
 
-            <div class="d-flex gap-2">
-                <button type="button"  (click)="homeContact()"   class="btn btn-warning button fw-semibold  mb-2 text-white">
-                    voltar
-                  </button>
-                  <button type="submit"    class="btn btn-primary button fw-semibold  mb-2 text-white">
-                    Salvar
-                  </button>
+                <div class="d-flex gap-2 mb-5 " style="position: absolute;  margin-bottom: 3%;">
+                    <button type="button"  (click)="homeContact()"   class="btn btn-warning button fw-semibold  mb-2 text-white">
+                        voltar
+                      </button>
+                      <button type="submit"    class="btn btn-primary button fw-semibold  mb-2 text-white">
+                        Salvar
+                      </button>
+                </div>
             </div>
     </form>
 </div>

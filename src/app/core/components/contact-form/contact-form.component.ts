@@ -18,6 +18,8 @@ export class ContactFormComponent implements OnInit {
   url: string ="./assets/images/undefine.png";
   @Input('action')
   action: Action = 'new';
+  @Input('id')
+  id?: number  = 0;
   file?: File
   constructor(
     private fb: FormBuilder,
@@ -29,38 +31,75 @@ export class ContactFormComponent implements OnInit {
       nome: ['', Validators.required],
       email: ['', Utils.isValidEmail.bind(this)],
       telefone: ['', Utils.isValidPhone.bind(this)],
-      foto: ['', Validators.required]
+      foto: ['']
     })
    }
    
   ngOnInit(): void {
+    this.validEdit()
   }
 
+
+  validEdit(){
+    if(this.action == 'edit' && this.id){
+      this.getUser()
+    }
+  }
+
+  fillForm(body: contactProps){
+     this.form.get('nome')?.setValue(body.nome),
+     this.form.get('email')?.setValue(body.email),
+     this.form.get('telefone')?.setValue(body.telefone),
+     this.form.get('foto')?.setValue(body.foto)
+     this.url = body.foto
+  }
+  getUser(){
+    this.getById(this.id).then((res) => {
+      this.fillForm(res)
+    }).catch((err) => {
+      this.toast.success('Erro ao buscar o contato', 'Erro', {progressBar: true, closeButton: true})
+    })
+  }
   validForm(){
     const form = this.verificForm(this.form);
     if(form){
       const body = {
-        "id" :1,
+        "id" : this.id ?  this.id : 1,
         "nome":this.form.get('nome')?.value,
         "email": this.form.get('email')?.value,
-        "telefone": "62 99999-8888",
+        "telefone": this.form.get('telefone')?.value,
         "foto": this.form.get('foto')?.value,
         "dataCadastro": new Date(),
       }
       this.saveContact(body);
     }
   }
+
     saveContact(body: contactProps){
-   
-      this.create(body).then((res) => {
-        this.file = undefined
-        this.url = ""
-        this.form.reset();
-        this.homeContact()
-        this.toast.success('Contato criado', 'Sucesso', {progressBar: true, closeButton: true})
-      }).catch((err) => {
-        this.toast.success('O contato  não foi  criado', 'Erro', {progressBar: true, closeButton: true})
-      })
+      if(this.action == 'new'){
+        this.create(body).then((res) => {
+          debugger
+          this.clear();
+        }).catch((err) => {
+          this.toast.success('O contato  não foi  criado', 'Erro', {progressBar: true, closeButton: true})
+        })
+      }else {
+        this.update(body).then((res) => {
+          debugger
+          this.clear();
+        }).catch((err) => {
+          this.toast.success('O contato  não foi  criado', 'Erro', {progressBar: true, closeButton: true})
+        })
+      }
+    }
+
+    clear(){
+      this.file = undefined
+      this.url = ""
+      this.form.reset();
+      this.homeContact()
+      const message = this.action == 'edit' ? 'Contato atualizado' :'Contato criado'
+      this.toast.success(message, 'Sucesso', {progressBar: true, closeButton: true})
     }
     homeContact(){
       this.router.navigate(['/contact']);
@@ -75,7 +114,32 @@ export class ContactFormComponent implements OnInit {
           }
         })
       });
+    };
+
+    update(body: contactProps): Promise<any>{
+      return new Promise<any>(async (resolve, reject) => {
+        await this.contactsService.put(body).subscribe({
+          next:(res:any) =>{
+            resolve(res)
+          }, error:(error:any) =>{
+            reject(error)
+          }
+        })
+      });
     }
+
+    getById(id?: number): Promise<any>{
+      return new Promise<any>(async (resolve, reject) => {
+        await this.contactsService.getById(id).subscribe({
+          next:(res:any) =>{
+            resolve(res)
+          }, error:(error:any) =>{
+            reject(error)
+          }
+        })
+      });
+    }
+
      formatarData(data: Date): string {
       const dia = String(data.getDate()).padStart(2, '0');
       const mes = String(data.getMonth() + 1).padStart(2, '0'); // Os meses são base 0 no JavaScript

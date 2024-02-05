@@ -3,8 +3,8 @@ export interface contactProps {
     nome: string;
     email: string;
     telefone: string;
-    foto: string | null; 
-    dataCadastro: any; 
+    foto: any | null; 
+    dataCadastro: Date; 
 }
 
 

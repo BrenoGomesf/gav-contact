@@ -73,7 +73,8 @@ export class ListComponent implements OnInit {
       })
     })
   }
-  navigate(url: string) {
-    return this.router.navigateByUrl(url);
+  navigate(url: string, id?: number) {
+    const isId = id ? `/edit/${id}` : ''
+    return this.router.navigateByUrl(`${url}${isId}`);
   }
 }

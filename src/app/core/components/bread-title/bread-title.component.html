@@ -3,7 +3,9 @@
         <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
                 <h4 class="mt-2 text-center fw-semibold">
                     <span *ngIf="action === 'new'">Criar novo contato</span>
-                    <span *ngIf="action === 'edit'">Editar contato</span>
+                    <span *ngIf="action === 'edit'">Editar contato
+                        <span *ngIf="id">{{id}}</span>
+                    </span>
                     <span *ngIf="action === 'list'">Listar contatos</span>
                 </h4>
           </nav>
