@@ -3,21 +3,24 @@
   <app-bread-title [action]="'list'"></app-bread-title>
 
     <div class="card shadow-lg p-3 mb-5">
-        <div class="card-body " style="overflow-y: scroll! important; overflow-x: scroll!;max-height: 30rem;">
+        <div class="card-body " style="overflow-y: scroll!important;max-height: 30rem;">
           <app-spinner-loading [loading]="load" [center]="true"></app-spinner-loading>
+
           <button type="button"  (click)="navigate('/contact/new')"   class="btn btn-warning button fw-semibold  mb-2 text-white">
             Adicionar
           </button>
+            
                 <div class="table-responsive" *ngIf="data.length > 0">
                     <table class="table able-striped">
                         <div class="bd-example">
                             <table class="table " >
                               <thead class="table-light table-striped">
+
                                   <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">E-mail</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Data Cadastro</th>
+                                    <th scope="col" class="d-none d-md-table-cell">E-mail</th>
+                                    <th scope="col" >Nome</th>
+                                    <th scope="col"class="d-none d-md-table-cell">Data Cadastro</th>
                                     <th scope="col ">
                                       <div class="text-center">
                                         Ações
@@ -29,11 +32,11 @@
                                 <ng-container *ngFor="let contact of data">
                                   <tr>
                                     <th scope="row">{{contact.id}}</th>
-                                    <td>{{contact.nome}}</td>
-                                    <td>{{contact.email}}</td>
-                                    <td>{{contact.dataCadastro | date: 'dd/mm/yyyy hh:mm'}}</td>
+                                    <td class="d-none d-md-table-cell">{{contact.email}}</td>
+                                    <td >{{contact.nome}}</td>
+                                    <td class="d-none d-md-table-cell">{{contact.dataCadastro | date: 'dd/mm/yyyy hh:mm'}}</td>
                                     <td class="d-flex flex-row align-items-center justify-content-center">
-                                      <button (click)="navigate('/contact', contact.id )" 
+                                      <button
                                         class="btn btn-outline-warning btn-sm mr-2s ml-2 m-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                           class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -67,3 +70,5 @@
         </div>
     </div>
 </div>
+
+
