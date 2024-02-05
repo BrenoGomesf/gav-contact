@@ -9,9 +9,14 @@ const routes: Routes = [
     loadChildren: () => import('../app/pages/components/home/home.module').then(m => m.HomeModule)
   },
   {
+    path: 'contact',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('../app/pages/components/contact/contact.module').then(m => m.ContactModule)
+  },
+  {
     path: 'auth',
     loadChildren: () => import('../app/pages/components/auth/auth.module').then(m => m.AuthModule)
-  }
+  },
 ];
 
 @NgModule({

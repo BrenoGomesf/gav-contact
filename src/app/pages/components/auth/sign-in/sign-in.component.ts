@@ -33,11 +33,10 @@ export class SignInComponent implements OnInit {
     const form = this.signinForm.valid
     if(form){
       this.getAuth()
-    } 
+    }else{
+      this.toast.info('formulário inválido', 'Aviso', {progressBar: true, closeButton: true})
+    }
   }
-  //
-  //gavtech@mail.com
-  //gavtech123
 
   async getAuth(){
     try {

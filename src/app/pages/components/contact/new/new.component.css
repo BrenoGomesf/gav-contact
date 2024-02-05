@@ -5,14 +5,17 @@
 
 .container{
     padding: 3%;
-    display: flex;
-    justify-content: center;
+    
     padding-bottom: 100%;
     align-content: center;
+    width: 100%;
 }
 @media only screen and (max-width: 1000px) {
     .texts{
         margin-top: 20%;
         padding-top: 20%;
     }
+}
+.table{
+    overflow: auto!important;
 }

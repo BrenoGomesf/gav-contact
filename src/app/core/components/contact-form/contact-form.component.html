@@ -1,0 +1,56 @@
+<div>
+
+    <form [formGroup]="form" (ngSubmit)="validForm()">
+        <div class="row">
+            <div class="col-6">
+
+                <div class="mb-3">
+                    <label  class="form-label labels fw-semibold">Nome:</label>
+                    <input type="text" class="form-control" formControlName="nome" placeholder="Informe o nome">
+                    <app-input-error-msg [control]="this.form.get('nome')" [for]="'nome'" label="Nome"></app-input-error-msg>
+                  </div>
+            </div>
+            <div class="col-6">
+                <div class="mb-3">
+                    <label  class="form-label labels fw-semibold">Telefone:</label>
+                    <input type="text" class="form-control" mask="(00)00000-0000||(00)00000-0000" formControlName="telefone" placeholder="Informe o telefone" >
+                    <app-input-error-msg [control]="this.form.get('telefone')" [for]="'telefone'" label="telefone"></app-input-error-msg>
+                  </div>
+            </div>
+            
+        </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label labels fw-semibold">Email:</label>
+                <input type="email" class="form-control" formControlName="email"
+                id="exampleInputEmail1" 
+                aria-describedby="emailHelp"
+                placeholder="Informe seu e-mail">
+                <app-input-error-msg [control]="this.form.get('email')" [for]="'email'"
+                                    label="E-mail"></app-input-error-msg>
+              </div>
+
+              <div class="form-row d-flex flex-row align-items-start">
+                                    
+                <div class="form-group col-md-6 m-2">
+                    <label class="form-label" for="customFile">Escolha a Imagem</label>
+                    <input type="file" class="form-control" id="Imagem" (change)="onChange($event)"   />
+                    <app-input-error-msg [control]="this.form.get('foto')" [for]="'foto'"
+                                    label="foto"></app-input-error-msg>
+                </div>
+
+                <div class="form-group col-md-6 m-2 d-flex flex-column align-items-start">
+                    <label class="form-label" for="customFile">Prévia</label>
+                    <img [src]="url" height="150" width="auto"><br>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="button"  (click)="homeContact()"   class="btn btn-warning button fw-semibold  mb-2 text-white">
+                    voltar
+                  </button>
+                  <button type="submit"    class="btn btn-primary button fw-semibold  mb-2 text-white">
+                    Salvar
+                  </button>
+            </div>
+    </form>
+</div>

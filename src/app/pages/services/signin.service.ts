@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { SignInProps } from '../model/signIn.interface';
+
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { SignInProps } from '../model/signIn.interface';
 @Injectable({
     providedIn: 'root',
   })
