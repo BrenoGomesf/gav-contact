@@ -38,7 +38,6 @@ export class ListComponent implements OnInit {
     this.load =  false;
   })
   }
-
   getContact(): Promise<contactProps[]>{
     return new Promise((resolve, reject) =>{
       return this.contactService.get().subscribe({
@@ -64,10 +63,8 @@ export class ListComponent implements OnInit {
     return new Promise(async (resolve, reject) =>{
       await this.contactService.delete(id).subscribe({
         next:(res:any) =>{
-          debugger
           resolve(res)
         }, error:(error:any) =>{
-          debugger
           reject(error)
         }
       })

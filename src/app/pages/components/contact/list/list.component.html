@@ -3,19 +3,16 @@
   <app-bread-title [action]="'list'"></app-bread-title>
 
     <div class="card shadow-lg p-3 mb-5">
-        <div class="card-body " style="overflow-y: scroll!important;max-height: 30rem;">
+        <div class="card-body " style="overflow-y: scroll! important; overflow-x: scroll!;max-height: 30rem;">
           <app-spinner-loading [loading]="load" [center]="true"></app-spinner-loading>
-
           <button type="button"  (click)="navigate('/contact/new')"   class="btn btn-warning button fw-semibold  mb-2 text-white">
             Adicionar
           </button>
-            
                 <div class="table-responsive" *ngIf="data.length > 0">
                     <table class="table able-striped">
                         <div class="bd-example">
                             <table class="table " >
                               <thead class="table-light table-striped">
-
                                   <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">E-mail</th>
