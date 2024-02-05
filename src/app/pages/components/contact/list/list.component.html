@@ -36,7 +36,7 @@
                                     <td >{{contact.nome}}</td>
                                     <td class="d-none d-md-table-cell">{{contact.dataCadastro | date: 'dd/mm/yyyy hh:mm'}}</td>
                                     <td class="d-flex flex-row align-items-center justify-content-center">
-                                      <button
+                                      <button (click)="navigate('/contact', contact.id)"
                                         class="btn btn-outline-warning btn-sm mr-2s ml-2 m-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                           class="bi bi-pencil-square" viewBox="0 0 16 16">
